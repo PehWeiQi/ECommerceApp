@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/ECommerceApp/.vs/ECommerceApp
+/ECommerceApp/ECommerceApp/obj/Debug/net8.0-windows
+/ECommerceApp/ECommerceApp/obj
+/ECommerceApp/ECommerceApp/ECommerceApp.csproj.user
+/ECommerceApp/ECommerceApp/ECommerceApp.csproj
+/ECommerceApp/ECommerceApp/AssemblyInfo.cs
