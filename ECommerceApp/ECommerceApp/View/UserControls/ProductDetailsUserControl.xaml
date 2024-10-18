@@ -14,7 +14,7 @@
         <Grid>
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="1. " Visibility="Collapsed"/>
+                    <TextBlock Text="1. " Visibility="{Binding IndexVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
                     <TextBlock Name="txtSku" Text="{Binding Sku}" Foreground="#a5a5a5"/>
                     <TextBlock Name="txtStockQuantity" Text="{Binding StockQuantity}" Margin="5,0,5,0" Foreground="#25c29a"/>
                     <TextBlock Text="in stock" Foreground="#25c29a"/>

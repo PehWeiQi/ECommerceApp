@@ -20,6 +20,14 @@ namespace ECommerceApp.View.UserControls
     /// </summary>
     public partial class ProductDetailsUserControl : UserControl
     {
+        public static readonly DependencyProperty IndexVisibilityProperty =
+        DependencyProperty.Register("IndexVisibility", typeof(Visibility), typeof(ProductDetailsUserControl), new PropertyMetadata(Visibility.Visible));
+
+        public Visibility IndexVisibility
+        {
+            get { return (Visibility)GetValue(IndexVisibilityProperty); }
+            set { SetValue(IndexVisibilityProperty, value); }
+        }
         public ProductDetailsUserControl()
         {
             InitializeComponent();

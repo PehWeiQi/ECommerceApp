@@ -16,13 +16,24 @@ using System.Windows.Shapes;
 namespace ECommerceApp.View.UserControls
 {
     /// <summary>
-    /// Interaction logic for MenuBar.xaml
+    /// Interaction logic for SearchBar.xaml
     /// </summary>
-    public partial class MenuBar: UserControl
+    public partial class SearchBar : UserControl
     {
-        public MenuBar()
+        public SearchBar()
         {
             InitializeComponent();
+        }
+        private void tbInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (tbInput.Text.Length > 0)
+            {
+                hintTxt.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                hintTxt.Visibility = Visibility.Visible;
+            }
         }
     }
 }

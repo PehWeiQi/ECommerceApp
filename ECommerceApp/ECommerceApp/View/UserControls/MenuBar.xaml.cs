@@ -20,6 +20,14 @@ namespace ECommerceApp.View.UserControls
     /// </summary>
     public partial class MenuBar : UserControl
     {
+        public static readonly DependencyProperty PageTitleProperty =
+        DependencyProperty.Register("PageTitle", typeof(string), typeof(MenuBar), new PropertyMetadata(string.Empty));
+
+        public string PageTitle
+        {
+            get { return (string)GetValue(PageTitleProperty); }
+            set { SetValue(PageTitleProperty, value); }
+        }
         public MenuBar()
         {
             InitializeComponent();

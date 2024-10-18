@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="ECommerceApp.View.UserControls.SearchBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ECommerceApp.View.UserControls" 
+             xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="300">
+    <Grid Background="White" >
+        <Button Name="btnSearch" Width="25" Background="Transparent" Foreground="LightGray" HorizontalAlignment="Left"
+        Content="{materialIcons:MaterialIconExt Kind=Search, Size=20}"
+        BorderThickness="0"/>
+        <TextBox x:Name="tbInput" VerticalContentAlignment="Center" TextChanged="tbInput_TextChanged"
+                 FontSize="16" FontWeight="Light" Background="Transparent" Padding="25,0,0,0"/>
+        <TextBlock x:Name="hintTxt" Text="Search" VerticalAlignment="Center" Panel.ZIndex="-1"
+                 FontSize="16" Foreground="LightGray" Margin="30,0,0,0"/>
+    </Grid>
+</UserControl>

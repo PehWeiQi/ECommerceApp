@@ -11,6 +11,7 @@ using ECommerceApp.Dto;
 using Newtonsoft.Json;
 using ECommerceApp.Model;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace ECommerceApp.ViewModel
 {
@@ -22,6 +23,8 @@ namespace ECommerceApp.ViewModel
         {
             products = new ObservableCollection<Product>();
             get_data();
+            IncrementQuantityCommand = new RelayCommand(IncrementQuantity);
+            DecrementQuantityCommand = new RelayCommand(DecrementQuantity);
         }
 
         private ObservableCollection<Product> products;
@@ -33,6 +36,36 @@ namespace ECommerceApp.ViewModel
             {
                 products = value;
                 OnPropertyChanged();
+            }
+        }
+
+        // Command to increment the quantity
+        public ICommand IncrementQuantityCommand { get; }
+
+        // Method to increment the quantity
+        private void IncrementQuantity(object parameter)
+        {
+            if (parameter is Product product)
+            {
+                product.UnitQuantity += 1; // Increment the quantity
+                OnPropertyChanged(nameof(Products)); // Notify UI of the change
+            }
+        }
+
+        // Command to decrement the quantity
+        public ICommand DecrementQuantityCommand { get; }
+
+        // Method to decrement the quantity
+        private void DecrementQuantity(object parameter)
+        {
+            if (parameter is Product product)
+            {
+                if (product.UnitQuantity > 0)
+                {
+                    product.UnitQuantity -= 1; // Decrement the quantity
+                    OnPropertyChanged(nameof(Products)); // Notify UI of the change
+                }
+                
             }
         }
 

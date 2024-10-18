@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace ECommerceApp.View.UserControls
 {
     /// <summary>
-    /// Interaction logic for CatalogProduct.xaml
+    /// Interaction logic for ProductUnitChangeUserControl.xaml
     /// </summary>
-    public partial class CatalogProduct: UserControl
+    public partial class ProductUnitChangeUserControl : UserControl
     {
-        public CatalogProduct()
+        public ProductUnitChangeUserControl()
         {
             InitializeComponent();
         }

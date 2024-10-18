@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ECommerceApp.MVVM;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ECommerceApp.Model
 {
-    internal class Product
+    internal class Product: ViewModelBase
     {
         [JsonPropertyName("id")]
         public int Id { get; set; }
@@ -21,5 +22,22 @@ namespace ECommerceApp.Model
         public string RegularPrice { get; set; }
         [JsonPropertyName("stock_quantity")]
         public int StockQuantity { get; set; }
+
+        private int unitQuantity;
+
+        public int UnitQuantity
+        {
+            get { return unitQuantity; }
+            set
+            {
+                if (unitQuantity != value)
+                {
+                    unitQuantity = value;
+                    OnPropertyChanged(nameof(UnitQuantity)); // Notify UI of the change
+                }
+            }
+        }
+
+
     }
 }
