@@ -1,4 +1,9 @@
-﻿using System.Text;
+﻿using ECommerceApp.ViewModel;
+using System.ComponentModel;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Runtime.CompilerServices;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,9 +21,14 @@ namespace ECommerceApp
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
+            MainViewModel viewModel = new MainViewModel();
+            DataContext = viewModel;
+            
         }
+
     }
 }
