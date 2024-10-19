@@ -18,7 +18,7 @@ namespace ECommerceApp.View.Pages
     /// <summary>
     /// Interaction logic for CartView.xaml
     /// </summary>
-    public partial class CartView : Page
+    public partial class CartView : UserControl
     {
         public CartView()
         {

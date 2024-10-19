@@ -17,11 +17,19 @@ namespace ECommerceApp.Services
         public ObservableCollection<Product> Products { get; set; } = new ObservableCollection<Product>();
         private static readonly HttpClient client = new HttpClient();
 
+
         public ProductService()
         {
             // Initialize with data or fetch it from the API
             get_data();
         }
+
+        public ObservableCollection<Product> GetCartItems()
+        {
+            var cartItems = Products.Where(p => p.UnitQuantity > 0);
+            return new ObservableCollection<Product>(cartItems);
+        }
+
 
         private async void get_data()
         {
@@ -44,7 +52,8 @@ namespace ECommerceApp.Services
                     System.Diagnostics.Debug.WriteLine(productsResponse.Count);
                     foreach (var product in productsResponse)
                     {
-                        //System.Diagnostics.Debug.WriteLine($"ID: {product.Id}, Name: {product.Name}, SKU: {product.Sku}, Price: {product.RegularPrice}");
+                        product.RegularPrice = Decimal.Parse("10.00");
+                        System.Diagnostics.Debug.WriteLine($"ID: {product.Id}, Price: {product.RegularPrice}");
                         Products.Add(product);
                     }
                 }

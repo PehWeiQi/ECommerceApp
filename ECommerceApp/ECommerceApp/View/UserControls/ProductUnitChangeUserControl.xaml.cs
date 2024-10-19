@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ECommerceApp.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,14 @@ namespace ECommerceApp.View.UserControls
     /// </summary>
     public partial class ProductUnitChangeUserControl : UserControl
     {
+        public CatalogViewModel ParentViewModel
+        {
+            get { return (CatalogViewModel)GetValue(ParentViewModelProperty); }
+            set { SetValue(ParentViewModelProperty, value); }
+        }
+
+        public static readonly DependencyProperty ParentViewModelProperty =
+            DependencyProperty.Register("ParentViewModel", typeof(CatalogViewModel), typeof(ProductUnitChangeUserControl), new PropertyMetadata(null));
         public ProductUnitChangeUserControl()
         {
             InitializeComponent();

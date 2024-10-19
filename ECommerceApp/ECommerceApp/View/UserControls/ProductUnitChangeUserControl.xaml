@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ECommerceApp.View.UserControls" xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
+             xmlns:local="clr-namespace:ECommerceApp.View.UserControls" 
+             xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF" 
+             xmlns:viewmodel="clr-namespace:ECommerceApp.ViewModel" 
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="300">
     <Grid Background="White">
@@ -15,16 +17,15 @@
                 <Rectangle Width="2" Fill="DarkGray"/>
                 <Button Name="btnSubtract" Content="{materialIcons:MaterialIconExt Kind=Minus, Size=20}"
                         Width="50" BorderThickness="0" Background="Transparent" Foreground="#4b4b4b"
-                        Command="{Binding DataContext.DecrementQuantityCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                        Command="{Binding ParentViewModel.DecrementQuantityCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
                         CommandParameter="{Binding}"/>
                 <TextBlock Text="{Binding UnitQuantity}" VerticalAlignment="Center" TextAlignment="Center" FontSize="16" 
                            Margin="10,0,10,0" FontWeight="Medium" Foreground="#4b4b4b" Width="50"/>
                 <Button Name="btnAdd" Content="{materialIcons:MaterialIconExt Kind=Plus, Size=20}"
                         Width="50" BorderThickness="0" Background="Transparent" Foreground="#4b4b4b"
-                        Command="{Binding DataContext.IncrementQuantityCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                        Command="{Binding ParentViewModel.IncrementQuantityCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
                         CommandParameter="{Binding}"/>
             </StackPanel>
         </Border>
-        
     </Grid>
 </UserControl>

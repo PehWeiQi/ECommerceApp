@@ -18,7 +18,7 @@ namespace ECommerceApp.View.Pages
     /// <summary>
     /// Interaction logic for CatalogView.xaml
     /// </summary>
-    public partial class CatalogView : Page
+    public partial class CatalogView : UserControl
     {
         public CatalogView()
         {

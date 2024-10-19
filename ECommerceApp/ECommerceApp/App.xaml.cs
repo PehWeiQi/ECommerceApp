@@ -23,16 +23,14 @@ namespace ECommerceApp
             });
             services.AddSingleton<MainViewModel>();
             services.AddSingleton<CatalogViewModel>();
-            services.AddSingleton<CatalogViewModel>();
+            services.AddSingleton<CartViewModel>();
             services.AddSingleton<INavigationService,NavigationService>();
-            services.AddSingleton<Func<Type, ViewModelBase>>(serviceProvider => 
-            viewModelType => (ViewModelBase)serviceProvider.GetRequiredService(viewModelType));
+            services.AddSingleton<Func<Type, ViewModelBase>>(serviceProvider => viewModelType => (ViewModelBase)serviceProvider.GetRequiredService(viewModelType));
 
             services.AddSingleton<ProductService>();
 
             _serviceProvider = services.BuildServiceProvider();
         }
-        
 
         protected override void OnStartup(StartupEventArgs e)
         {

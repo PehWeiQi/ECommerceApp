@@ -19,7 +19,7 @@ namespace ECommerceApp.Model
         [JsonPropertyName("sku")]
         public string Sku { get; set; }
         [JsonPropertyName("regular_price")]
-        public string RegularPrice { get; set; }
+        public decimal RegularPrice { get; set; }
         [JsonPropertyName("stock_quantity")]
         public int StockQuantity { get; set; }
 
@@ -38,6 +38,19 @@ namespace ECommerceApp.Model
             }
         }
 
+        private decimal total;
 
+        public decimal Total
+        {
+            get { return total; }
+            set
+            {
+                if (total != value)
+                {
+                    total = value;
+                    OnPropertyChanged(nameof(Total));
+                }
+            }
+        }
     }
 }
