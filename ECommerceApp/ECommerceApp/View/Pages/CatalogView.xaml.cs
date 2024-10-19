@@ -1,9 +1,8 @@
-﻿using ECommerceApp.ViewModel;
-using System.ComponentModel;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Runtime.CompilerServices;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -14,18 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ECommerceApp
+namespace ECommerceApp.View.Pages
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for CatalogView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CatalogView : Page
     {
-        public MainWindow()
+        public CatalogView()
         {
             InitializeComponent();
-            
         }
-
     }
 }

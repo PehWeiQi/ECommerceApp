@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ECommerceApp.Model
 {
-    internal class Product: ViewModelBase
+    public class Product: ObservableObject
     {
         [JsonPropertyName("id")]
         public int Id { get; set; }
