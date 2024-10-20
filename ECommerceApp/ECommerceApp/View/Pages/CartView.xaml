@@ -6,25 +6,35 @@
       xmlns:local="clr-namespace:ECommerceApp.View.Pages" xmlns:usercontrols="clr-namespace:ECommerceApp.View.UserControls" xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
              mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800">
-
+    
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
         <ScrollViewer VerticalScrollBarVisibility="Hidden" Margin="10">
-            <ItemsControl ItemsSource="{Binding CartItems}">
+            <ItemsControl ItemsSource="{Binding CartItems}" AlternationCount="{Binding CartItems.Count}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
-                            <usercontrols:ProductDetailsUserControl Height="100" IndexVisibility="Visible"/>
+                            <usercontrols:ProductDetailsUserControl Height="100" IndexVisibility="Visible"
+                             Index="{Binding RelativeSource={RelativeSource AncestorType={x:Type ContentPresenter}}, Path=(ItemsControl.AlternationIndex)}"/>
                             <Grid HorizontalAlignment="Right">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
+                                    <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
                                 <usercontrols:CartItemDetailBox Width="80" Margin="0,0,10,0" Title="Order" Txt1="{Binding UnitQuantity}" Txt2="UNIT >" BorderColor="#00a0f7"/>
-                                <usercontrols:CartItemDetailBox Grid.Column="1" Width="80" Title="Total" Txt1="RM " Txt2="{Binding Total}" BorderColor="#ffc733"/>
+                                <usercontrols:CartItemDetailBox Grid.Column="1" Margin="0,0,10,0" Width="80" Title="Total" Txt1="RM " Txt2="{Binding Total}" BorderColor="#ffc733"/>
+
+                                <Grid Grid.Column="2">
+                                    <materialIcons:MaterialIcon Kind="Circle" Foreground="Red" Height="30" Margin="5,0,5,0"/>
+                                    <Button Name="btnMinus" Content="{materialIcons:MaterialIconExt Kind=Minus, Size=25}"
+                                            Width="50" BorderThickness="0" Background="Transparent" Foreground="White"
+                                            Command="{Binding DataContext.RemoveCartItemCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            CommandParameter="{Binding}"/>
+                                </Grid>
                             </Grid>
                             <Rectangle Fill="LightGray" Width="Auto" Height="2" Margin="0,5,0,5"/>
                         </StackPanel>
@@ -32,8 +42,31 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
+        <Rectangle Grid.Row="1" Fill="Gray" Height="2" VerticalAlignment="Top"/>
         <Grid Grid.Row="1">
-            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Margin="10">
+                <TextBlock Text="{Binding CartTotalItems, StringFormat='Total ({0})'}" 
+                FontSize="16" FontWeight="Medium" Foreground="Gray"/>
+                <TextBlock Text="{Binding CartTotalAmount, StringFormat='RM {0:F2}'}"
+                FontSize="24" FontWeight="Medium"/>
+            </StackPanel>
+            <Button Content="Checkout" Grid.Column="1" Margin="10" Background="#08a4f4" FontSize="20" FontWeight="Medium" Foreground="White">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="0"
+                            CornerRadius="30">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
         </Grid>
     </Grid>
 </UserControl>

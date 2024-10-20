@@ -7,23 +7,43 @@
              xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="800">
-    <Grid>
-        <StackPanel Orientation="Horizontal" Background="#08a4f4" >
-            <Button Name="btnBack" Width="80" Background="Transparent" Foreground="White" 
+    <Grid Background="#08a4f4">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Name="btnBack" Width="80" Background="Transparent" Foreground="White" 
                     Content="{materialIcons:MaterialIconExt Kind=LessThan, Size=30}"
                     BorderThickness="0"/>
-            <TextBlock Name="txtCategoriesName" Text="{Binding PageTitle, RelativeSource={RelativeSource AncestorType=UserControl}}" VerticalAlignment="Center" Foreground="White" FontSize="20"/>
-            <Rectangle Width="290"/>
-            <TextBlock Name="txtCompanyName" Text="Company Name" VerticalAlignment="Center" Foreground="White" FontSize="20"/>
-            <Grid>
-                <materialIcons:MaterialIcon Kind="Circle" Foreground="White" Height="40" Margin="5,0,5,0"/>
-                <TextBlock Text="CN" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#08a4f4"
-                           FontSize="16" FontWeight="Medium"/>
-            </Grid>
+            <TextBlock Grid.Column="1" Name="txtCategoriesName" Text="{Binding PageTitle, RelativeSource={RelativeSource AncestorType=UserControl}}" VerticalAlignment="Center" Foreground="White" FontSize="20"/>
+            <TextBlock Grid.Column="3" Name="txtCompanyName" Text="Company Name" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" FontSize="20" Margin="5"/>
+            <Grid Grid.Column="4">
+                    <materialIcons:MaterialIcon Kind="Circle" Foreground="White" Height="40" Margin="5,0,5,0"/>
+                    <TextBlock Text="CN" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#08a4f4"
+                               FontSize="16" FontWeight="Medium"/>
+                </Grid>
+        
+        <Button Grid.Column="5" Name="btnMore"  Width="80" Background="Transparent" Foreground="White" 
+                Content="{materialIcons:MaterialIconExt Kind=MoreVert, Size=30}"
+                BorderThickness="0" Margin="5,0,5,0" Command="{Binding ClearCartItemsCommand}"/>
+        
+        <!--
+                <Grid Grid.Column="5">
+            <StackPanel Margin="20">
+                <Button x:Name="DropdownButton" Content="Options" Width="100" Click="DropdownButton_Click"/>
+                <ContextMenu x:Name="OptionsMenu" PlacementTarget="{Binding ElementName=DropdownButton}">
+                    <MenuItem Header="Option 1" Click="Option1_Click"/>
+                    <MenuItem Header="Option 2" Click="Option2_Click"/>
+                    <MenuItem Header="Clear Cart" Click="ClearCart_Click"/>
+                </ContextMenu>
+            </StackPanel>
+        </Grid>
+        -->
 
-            <Button Name="btnMore"  Width="80" Background="Transparent" Foreground="White" 
-                    Content="{materialIcons:MaterialIconExt Kind=MoreVert, Size=30}"
-                    BorderThickness="0" Margin="5,0,5,0"/>
-        </StackPanel>
     </Grid>
 </UserControl>

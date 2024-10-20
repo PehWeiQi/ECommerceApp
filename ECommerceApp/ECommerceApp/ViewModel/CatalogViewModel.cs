@@ -40,7 +40,9 @@ namespace ECommerceApp.ViewModel
 
         public ObservableCollection<Product> Products => _productService.Products;
 
+
         public ICommand IncrementQuantityCommand { get; }
+
 
         // Method to increment the quantity
         private void IncrementQuantity(object parameter)

@@ -38,6 +38,7 @@
                                 <usercontrols:ProductUnitChangeUserControl 
                                     ParentViewModel="{Binding DataContext, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
                                 
+                            
                                 <Grid Grid.Column="1">
                                     <materialIcons:MaterialIcon Kind="Circle" Foreground="#08a4f4" Height="30" Margin="5,0,5,0"/>
                                     <Button Name="btnPlus" Content="{materialIcons:MaterialIconExt Kind=Plus, Size=25}"
