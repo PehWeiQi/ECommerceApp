@@ -14,11 +14,29 @@ namespace ECommerceApp.ViewModel
     public class CartViewModel: ViewModelBase
     {
         private readonly ProductService _productService;
-        public CartViewModel(ProductService productService)
+
+        private INavigationService _navigationService;
+
+        public INavigationService NavigationService
+        {
+            get => _navigationService;
+            set
+            {
+                _navigationService = value;
+                OnPropertyChanged();
+
+            }
+        }
+
+        public RelayCommand NavigationBackCommand { get; }
+
+        public CartViewModel(ProductService productService, INavigationService navigationService)
         {
             _productService = productService;
+            NavigationService = navigationService;
             ClearCartItemsCommand = new RelayCommand(ClearCartItems);
             RemoveCartItemCommand = new RelayCommand(RemoveCartItem);
+            NavigationBackCommand = new RelayCommand(o => { NavigationService.NavigateTo<CatalogViewModel>(); }, o => true);
         }
         public ObservableCollection<Product> CartItems => _productService.GetCartItems();
         public decimal CartTotalAmount => _productService.GetCartTotalAmount();
@@ -43,6 +61,9 @@ namespace ECommerceApp.ViewModel
         private void ClearCartItems(object parameter)
         {
             _productService.ClearCartItems();
+            OnPropertyChanged(nameof(CartItems));
+            OnPropertyChanged(nameof(CartTotalAmount));
+            OnPropertyChanged(nameof(CartTotalItems));
         }
 
     }

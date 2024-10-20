@@ -33,7 +33,7 @@ namespace ECommerceApp.Model
                 if (unitQuantity != value)
                 {
                     unitQuantity = value;
-                    OnPropertyChanged(nameof(UnitQuantity)); // Notify UI of the change
+                    OnPropertyChanged(nameof(UnitQuantity)); 
                 }
             }
         }

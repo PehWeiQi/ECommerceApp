@@ -17,21 +17,17 @@ namespace ECommerceApp.Repos
             return File.Exists("ProductsDb.sqlite");
         }
 
-        // Method to create the database and Products table
         public static void InitializeDatabase()
         {
-            // Create the SQLite database file if it doesn't exist
             if (!DbExist())
             {
                 SQLiteConnection.CreateFile("ProductsDb.sqlite");
             }
 
-            // Connect to the SQLite database
             using (var m_dbConnection = new SQLiteConnection("Data Source=ProductsDb.sqlite"))
             {
                 m_dbConnection.Open();
 
-                // SQL to create the Products table if it doesn't exist
                 string sql = @"CREATE TABLE IF NOT EXISTS Products (
                             Id INTEGER PRIMARY KEY,
                             Name VARCHAR(200) NOT NULL,
@@ -51,10 +47,8 @@ namespace ECommerceApp.Repos
             }
         }
 
-        // Method to insert a product into the database
         public static int AddProduct(Product product)
         {
-            // Check if the product already exists
             using (var connection = new SQLiteConnection("Data Source=ProductsDb.sqlite"))
             {
                 connection.Open();
@@ -65,8 +59,7 @@ namespace ECommerceApp.Repos
                     var exists = Convert.ToInt32(checkCommand.ExecuteScalar()) > 0;
                     if (exists)
                     {
-                        // Handle the situation where the product already exists
-                        return -1; // or throw an exception, or update instead
+                        return -1; 
                     }
                 }
             }
@@ -86,7 +79,6 @@ namespace ECommerceApp.Repos
             return ExecuteWrite(query, args);
         }
 
-        // Method to retrieve all products from the database
         public static List<Product> GetProductsFromDatabase()
         {
             try
@@ -129,7 +121,6 @@ namespace ECommerceApp.Repos
             }
         }
 
-        // Private helper method to execute an INSERT, UPDATE, or DELETE query
         private static int ExecuteWrite(string query, Dictionary<string, object> args)
         {
             int numberOfRowsAffected;

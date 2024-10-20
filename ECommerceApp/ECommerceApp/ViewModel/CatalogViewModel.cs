@@ -43,31 +43,28 @@ namespace ECommerceApp.ViewModel
 
         public ICommand IncrementQuantityCommand { get; }
 
-
-        // Method to increment the quantity
         private void IncrementQuantity(object parameter)
         {
             if (parameter is Product product)
             {
-                product.UnitQuantity += 1; // Increment the quantity
+                product.UnitQuantity += 1; 
                 product.Total = product.UnitQuantity * product.RegularPrice;
-                OnPropertyChanged(nameof(Products)); // Notify UI of the change
+                OnPropertyChanged(nameof(Products)); 
             }
         }
 
-        // Command to decrement the quantity
+
         public ICommand DecrementQuantityCommand { get; }
 
-        // Method to decrement the quantity
         private void DecrementQuantity(object parameter)
         {
             if (parameter is Product product)
             {
                 if (product.UnitQuantity > 0)
                 {
-                    product.UnitQuantity -= 1; // Decrement the quantity
+                    product.UnitQuantity -= 1; 
                     product.Total = product.UnitQuantity * product.RegularPrice;
-                    OnPropertyChanged(nameof(Products)); // Notify UI of the change
+                    OnPropertyChanged(nameof(Products));
                 }
 
             }

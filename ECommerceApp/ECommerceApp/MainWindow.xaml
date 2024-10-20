@@ -8,11 +8,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="9*"/>
-        </Grid.RowDefinitions>
-        <usercontrols:MenuBar Height="Auto" PageTitle="Categories Name"/>
-        <ContentPresenter Content="{Binding NavigationService.CurrentView}" Grid.Row="1"/>
+        <ContentPresenter Content="{Binding NavigationService.CurrentView}"/>
     </Grid>
 </Window>

@@ -32,6 +32,24 @@ namespace ECommerceApp.View.UserControls
             set { SetValue(PageTitleProperty, value); }
         }
 
+        public static readonly DependencyProperty BackCommandProperty =
+            DependencyProperty.Register("BackCommand", typeof(ICommand), typeof(MenuBar), new PropertyMetadata(null));
+
+        public ICommand BackCommand
+        {
+            get { return (ICommand)GetValue(BackCommandProperty); }
+            set { SetValue(BackCommandProperty, value); }
+        }
+
+        public static readonly DependencyProperty ClearCommandProperty =
+            DependencyProperty.Register("ClearCommand", typeof(ICommand), typeof(MenuBar), new PropertyMetadata(null));
+
+        public ICommand ClearCommand
+        {
+            get { return (ICommand)GetValue(ClearCommandProperty); }
+            set { SetValue(ClearCommandProperty, value); }
+        }
+
         public MenuBar()
         {
             InitializeComponent();

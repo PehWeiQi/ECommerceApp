@@ -35,7 +35,6 @@ namespace ECommerceApp.View.UserControls
         public static readonly DependencyProperty TitleProperty =
             DependencyProperty.Register("Title", typeof(string), typeof(CartItemDetailBox), new PropertyMetadata(string.Empty));
 
-        // Txt1 DependencyProperty
         public string Txt1
         {
             get { return (string)GetValue(Txt1Property); }
@@ -45,7 +44,6 @@ namespace ECommerceApp.View.UserControls
         public static readonly DependencyProperty Txt1Property =
             DependencyProperty.Register("Txt1", typeof(string), typeof(CartItemDetailBox), new PropertyMetadata(string.Empty));
 
-        // Txt2 DependencyProperty
         public string Txt2
         {
             get { return (string)GetValue(Txt2Property); }
@@ -54,8 +52,7 @@ namespace ECommerceApp.View.UserControls
 
         public static readonly DependencyProperty Txt2Property =
             DependencyProperty.Register("Txt2", typeof(string), typeof(CartItemDetailBox), new PropertyMetadata(string.Empty));
-        
-        // BorderColor DependencyProperty (for the Rectangle's Fill)
+
         public Brush BorderColor
         {
             get { return (Brush)GetValue(BorderColorProperty); }

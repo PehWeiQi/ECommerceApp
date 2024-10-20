@@ -11,6 +11,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using ECommerceApp.Repos;
+using DotNetEnv;
 
 namespace ECommerceApp.Services
 {
@@ -21,9 +22,7 @@ namespace ECommerceApp.Services
 
         public ProductService()
         {
-            // Initialize with data or fetch it from the API
             IntializeProducts();
-
         }
 
         public ObservableCollection<Product> GetCartItems()
@@ -49,6 +48,7 @@ namespace ECommerceApp.Services
             foreach (var product in Products)
             {
                 product.UnitQuantity = 0;
+                product.Total = 0;
             }
         }
 
@@ -74,10 +74,8 @@ namespace ECommerceApp.Services
         private void FetchProductsLocal()
         {
             var dbProducts = ProductRepository.GetProductsFromDatabase();
-            System.Diagnostics.Debug.WriteLine(dbProducts.Count);
             foreach (var product in dbProducts)
             {
-                System.Diagnostics.Debug.WriteLine($"ID: {product.Id}, Price: {product.RegularPrice}");
                 Products.Add(product);
             }
         } 
@@ -95,9 +93,10 @@ namespace ECommerceApp.Services
 
         private async Task<int?> FetchProductsApi(int pageNum = 1)
         {
+            Env.Load("C:\\Users\\Owner\\source\\repos\\ECommerceApp\\ECommerceApp\\ECommerceApp\\.env");
             string url = $"https://cloud.boostorder.com/bo-mart/api/v1/wp-json/wc/v1/bo/products?page={pageNum}";
-            string username = "ck_b9e4e281dc7aa5595062207a479090a390304335";
-            string password = "cs_95b5c4724a48737ed72daf8314dae9cbc83842ae";
+            string username = Env.GetString("API_USERNAME");
+            string password = Env.GetString("API_PASSWORD");
 
             var byteArray = Encoding.ASCII.GetBytes($"{username}:{password}");
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
@@ -112,10 +111,9 @@ namespace ECommerceApp.Services
                 if (productsDto != null)
                 {
                     var productsResponse = productsDto.Products;
-                    System.Diagnostics.Debug.WriteLine(productsResponse.Count);
+
                     foreach (var product in productsResponse)
                     {
-                        System.Diagnostics.Debug.WriteLine($"ID: {product.Id}, Price: {product.RegularPrice}");
                         product.RegularPrice = Decimal.Parse("10.00");                       
                         Products.Add(product);
                     }
@@ -123,7 +121,6 @@ namespace ECommerceApp.Services
 
                 IEnumerable<string> headerValues = response.Headers.GetValues("X-WC-TotalPages");
                 int totalPages = Int32.Parse(headerValues.FirstOrDefault()!);
-                System.Diagnostics.Debug.WriteLine(totalPages);
                 return totalPages;
 
             }

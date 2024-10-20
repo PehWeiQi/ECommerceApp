@@ -18,8 +18,8 @@
         </Grid.ColumnDefinitions>
 
             <Button Grid.Column="0" Name="btnBack" Width="80" Background="Transparent" Foreground="White" 
-                    Content="{materialIcons:MaterialIconExt Kind=LessThan, Size=30}"
-                    BorderThickness="0"/>
+                    Content="{materialIcons:MaterialIconExt Kind=LessThan, Size=30}" BorderThickness="0" 
+                    Command="{Binding BackCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
             <TextBlock Grid.Column="1" Name="txtCategoriesName" Text="{Binding PageTitle, RelativeSource={RelativeSource AncestorType=UserControl}}" VerticalAlignment="Center" Foreground="White" FontSize="20"/>
             <TextBlock Grid.Column="3" Name="txtCompanyName" Text="Company Name" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" FontSize="20" Margin="5"/>
             <Grid Grid.Column="4">
@@ -27,23 +27,10 @@
                     <TextBlock Text="CN" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#08a4f4"
                                FontSize="16" FontWeight="Medium"/>
                 </Grid>
-        
+
         <Button Grid.Column="5" Name="btnMore"  Width="80" Background="Transparent" Foreground="White" 
-                Content="{materialIcons:MaterialIconExt Kind=MoreVert, Size=30}"
-                BorderThickness="0" Margin="5,0,5,0" Command="{Binding ClearCartItemsCommand}"/>
-        
-        <!--
-                <Grid Grid.Column="5">
-            <StackPanel Margin="20">
-                <Button x:Name="DropdownButton" Content="Options" Width="100" Click="DropdownButton_Click"/>
-                <ContextMenu x:Name="OptionsMenu" PlacementTarget="{Binding ElementName=DropdownButton}">
-                    <MenuItem Header="Option 1" Click="Option1_Click"/>
-                    <MenuItem Header="Option 2" Click="Option2_Click"/>
-                    <MenuItem Header="Clear Cart" Click="ClearCart_Click"/>
-                </ContextMenu>
-            </StackPanel>
-        </Grid>
-        -->
+                Content="{materialIcons:MaterialIconExt Kind=MoreVert, Size=30}" BorderThickness="0" Margin="5,0,5,0" 
+                Command="{Binding ClearCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
 
     </Grid>
 </UserControl>
